@@ -1,0 +1,29 @@
+{
+	"name": "diqa/reports",
+	"type": "mediawiki-extension",
+	"description": "PDF-Reports",
+	"keywords": [
+		"DIQA", "PDF", "Export", "Report"
+	],
+	
+	"license": "GPL v2.0",
+	"authors": [
+		{
+			"name": "Kai Kühn"
+			
+		}
+	],
+	"require": {
+		"diqa/util": "dev-master"
+	},
+	
+	"autoload": {
+		"psr-4": {
+			"DIQA\\": "src/"
+		},
+		"files" : [
+			"DIQAreports.php"
+		]
+		
+	}
+}
