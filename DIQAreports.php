@@ -47,7 +47,7 @@ global $wgJobClasses;
 // register extension
 $wgExtensionCredits[ 'odb' ][] = array(
 	'path' => __FILE__,
-	'name' => 'DIQA Reports',
+	'name' => 'Reports',
 	'author' => array( 'DIQA Projektmanagement GmbH' ),
 	'license-name' => 'GPL-2.0+',
 	'url' => 'http://www.diqa-pm.com',
