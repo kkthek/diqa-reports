@@ -31,7 +31,7 @@ class PdfExportResultPrinterAsync extends PdfExportResultPrinter {
 
 	public function __construct( $format, $inline = true, $useValidator = false ) {
 		parent::__construct($format, $inline, $useValidator);
-		$this->logger = new LoggerUtils('PdfExportResultPrinterAsync', 'DIQAreports');
+		$this->logger = new LoggerUtils('PdfExportResultPrinterAsync', 'Reports');
 	}
 
 	/* (non-PHPdoc)

@@ -28,7 +28,7 @@ abstract class ExportJob extends Job {
 	 */
 	function __construct( $jobName, $title, $params ) {
 		parent::__construct( $jobName, $title, $params );
-		$this->logger = new LoggerUtils($jobName, 'DIQAreports');
+		$this->logger = new LoggerUtils($jobName, 'Reports');
 	}
 
 	protected function makePdfFromUrls($urls) {

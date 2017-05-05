@@ -52,7 +52,7 @@ class PdfExportResultPrinter extends FileExportPrinter {
 
      public function __construct( $format, $inline = true, $useValidator = false ) {
      	parent::__construct($format, $inline, $useValidator);
-     	$this->logger = new LoggerUtils('PdfExportResultPrinter', 'DIQAreports');
+     	$this->logger = new LoggerUtils('PdfExportResultPrinter', 'Reports');
      }
      
     /**

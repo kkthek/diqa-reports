@@ -115,12 +115,12 @@ class PDFUtils {
     }
 
     private static function logError($msg) {
-        $logger = new LoggerUtils('createPDF', 'DIQAreports');
+        $logger = new LoggerUtils('createPDF', 'Reports');
         $logger->error($msg);
     }
 
     private static function logDebug($msg) {
-        $logger = new LoggerUtils('createPDF', 'DIQAreports');
+        $logger = new LoggerUtils('createPDF', 'Reports');
         $logger->debug($msg);
     }
 
