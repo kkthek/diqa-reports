@@ -2,13 +2,13 @@
 
 namespace DIQA\Reports;
 
-use SMWQueryResult;
-use SMWQueryProcessor;
-use SMWQuery;
 use Sanitizer;
-use SemanticTitle;
-use SMWWikiPageValue;
 use SMW\FileExportPrinter;
+use SMWQuery;
+use SMWQueryProcessor;
+use SMWQueryResult;
+use SMWWikiPageValue;
+use Title;
 
 /**
  * Result printer to print results in a CSV (deliminter separated value) format
@@ -215,7 +215,7 @@ class SpreadsheetCsvResultPrinter extends FileExportPrinter {
 	 */
 	private function getSemanticTitle(SMWWikiPageValue $wikiPageValue) {
 		$title = $wikiPageValue->getTitle();
-		$semanticTitle = SemanticTitle::getText( $title );
+		$semanticTitle = self::getDisplayTitle( $title );
 		if($semanticTitle) {
 			return Sanitizer::decodeCharReferences($semanticTitle);
 		} else {
@@ -223,6 +223,32 @@ class SpreadsheetCsvResultPrinter extends FileExportPrinter {
 		}
 	}
 
+	/**
+	 * adapted from DisplayTitleHook:
+	 * 
+	 * Get displaytitle page property text.
+	 *
+	 * @param Title $title the Title object for the page
+	 * @return string display title, if set, otherwise prefixedText
+	 */
+	private static function getDisplayTitle( Title $title ) {
+	    $pagetitle = $title->getPrefixedText();
+	    // remove fragment
+	    $title = Title::newFromText( $pagetitle );
+	    
+        $values = \PageProps::getInstance()->getProperties( $title, 'displaytitle' );
+        $id = $title->getArticleID();
+        if ( array_key_exists( $id, $values ) ) {
+            $value = $values[$id];
+            if ( trim( str_replace( '&#160;', '', strip_tags( $value ) ) ) !== '' ) {
+                return $value;
+            }
+        }
+        
+        // no display title found
+        return $title->getPrefixedText();
+	}
+	
 	/**
 	 * Returns a single line.
 	 * @param array $fields
