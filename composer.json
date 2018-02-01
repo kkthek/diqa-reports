@@ -6,7 +6,7 @@
 		"DIQA", "PDF", "Export", "Report"
 	],
 	
-	"license": "GPL v2.0",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Kai Kühn"
